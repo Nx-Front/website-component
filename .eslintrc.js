@@ -1,28 +1,32 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2020": true
+    root: true,
+    parserOptions: {
+        parser: 'babel-eslint',
+        ecmaVersion: 10,
+        sourceType: 'module'
     },
-    "extends": ["plugin:vue/essential", "eslint:recommended"],
-    "parserOptions": {
-        "ecmaVersion": 10,
-        "sourceType": "module"
+    env: {
+        'browser': true,
+        'es2020': true,
+        'node': true
     },
-    "plugins": [
-        "vue"
-    ],
+    // plugin:vue/recommended
+    extends: ['plugin:vue/recommended', 'eslint:recommended'],
     rules: {
-        "vue/max-attributes-per-line": [2, {
-            "singleline": 10,
-            "multiline": {
-                "max": 1,
-                "allowFirstLine": false
+        'vue/max-attributes-per-line': [2, {
+            'singleline': 10,
+            'multiline': {
+                'max': 1,
+                'allowFirstLine': false
             }
         }],
-        "vue/singleline-html-element-content-newline": "off",
-        "vue/multiline-html-element-content-newline": "off",
-        "vue/name-property-casing": ["error", "PascalCase"],
-        "vue/no-v-html": "off",
+        'vue/attribute-hyphenation': [2, 'always', {
+            'ignore': []
+        }],
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/multiline-html-element-content-newline': 'off',
+        'vue/name-property-casing': [2, 'PascalCase'],
+        'vue/no-v-html': 'off',
         'accessor-pairs': 2,
         'arrow-spacing': [2, {
             'before': true,
@@ -44,16 +48,16 @@ module.exports = {
         'constructor-super': 2,
         'curly': [2, 'multi-line'],
         'dot-location': [2, 'property'],
-        'eol-last': 2,
-        'eqeqeq': ["error", "always", {
-            "null": "ignore"
+        'eol-last': 'off',
+        'eqeqeq': ['error', 'always', {
+            'null': 'ignore'
         }],
         'generator-star-spacing': [2, {
             'before': true,
             'after': true
         }],
         'handle-callback-err': [2, '^(err|error)$'],
-        'indent': [2, 2, {
+        'indent': [2, 4, {
             'SwitchCase': 1
         }],
         'jsx-quotes': [2, 'prefer-single'],
@@ -189,10 +193,10 @@ module.exports = {
         'yield-star-spacing': [2, 'both'],
         'yoda': [2, 'never'],
         'prefer-const': 2,
-        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+        // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'object-curly-spacing': [2, 'always', {
             objectsInObjects: false
         }],
         'array-bracket-spacing': [2, 'never']
     }
-};
+}
