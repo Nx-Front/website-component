@@ -39,6 +39,8 @@ module.exports = {
 }
 ```
 
+---
+
 ### Development
 
 ### Eslint in Vscode
