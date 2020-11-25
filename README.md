@@ -2,13 +2,54 @@
 
 NX official website components by Vue.
 
-#### Eslint in Vscode
+### Use
+
+```
+npm install -D babel-plugin-import
+```
+
+babel.config.js
+
+```
+module.exports = {
+  plugins: [
+    [
+      "import",
+      {
+        libraryName: "Nx-Component",
+        libraryDirectory: "lib",
+        styleLibraryDirectory: "lib/theme-chalk",
+        camel2DashComponentName: false,
+      }
+    ]
+  ]
+}
+
+```
+
+#### Vue Cli 3+
+
+```
+module.exports = {
+    configureWebpack: {
+      resolve: {
+      extensions: ['.js', '.vue', '.css', '.json']
+    }
+  }
+}
+```
+
+### Development
+
+### Eslint in Vscode
 
 ###### install
 
 - EsLint
 - vetur
 - Prettier - Code formatter
+
+###### VSCode config
 
 ```
 {

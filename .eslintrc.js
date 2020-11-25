@@ -20,12 +20,9 @@ module.exports = {
                 'allowFirstLine': false
             }
         }],
-        'vue/attribute-hyphenation': [2, 'always', {
-            'ignore': []
-        }],
         'vue/singleline-html-element-content-newline': 'off',
         'vue/multiline-html-element-content-newline': 'off',
-        'vue/name-property-casing': [2, 'PascalCase'],
+        'vue/name-property-casing': ['error', 'PascalCase'],
         'vue/no-v-html': 'off',
         'accessor-pairs': 2,
         'arrow-spacing': [2, {
@@ -48,16 +45,14 @@ module.exports = {
         'constructor-super': 2,
         'curly': [2, 'multi-line'],
         'dot-location': [2, 'property'],
-        'eol-last': 'off',
-        'eqeqeq': ['error', 'always', {
-            'null': 'ignore'
-        }],
+        'eol-last': 0,
+        'eqeqeq': ['error', 'always', { 'null': 'ignore' }],
         'generator-star-spacing': [2, {
             'before': true,
             'after': true
         }],
         'handle-callback-err': [2, '^(err|error)$'],
-        'indent': [2, 4, {
+        'indent': [1, 4, {
             'SwitchCase': 1
         }],
         'jsx-quotes': [2, 'prefer-single'],
@@ -108,7 +103,7 @@ module.exports = {
             'allowSwitch': false
         }],
         'no-lone-blocks': 2,
-        'no-mixed-spaces-and-tabs': 2,
+        'no-mixed-spaces-and-tabs': 0,
         'no-multi-spaces': 2,
         'no-multi-str': 2,
         'no-multiple-empty-lines': [2, {
@@ -193,7 +188,7 @@ module.exports = {
         'yield-star-spacing': [2, 'both'],
         'yoda': [2, 'never'],
         'prefer-const': 2,
-        // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'object-curly-spacing': [2, 'always', {
             objectsInObjects: false
         }],
