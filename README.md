@@ -26,9 +26,34 @@ module.exports = {
 }
 
 ```
+或者：
+```
+npm install babel-plugin-component -D
+```
+
+```
+
+module.exports = {
+  plugins:[
+    [
+    "component",
+      {
+        libraryName: "nx-component",
+        styleLibrary: {
+          name:"theme-chalk",
+          base:false
+        },
+        camel2Dash:false
+      }
+    ]
+  ]
+}
+
+```
 
 #### Vue Cli 3+
 
+> babel-plugin-import需要配置修改webpackextensions配置，否则会无法读取css文件后缀。
 ```
 module.exports = {
     configureWebpack: {
@@ -88,3 +113,5 @@ module.exports = {
     "files.autoSave": "off",
 }
 ```
+
+> 引入依赖可能会出现ESlint报错，暂时替代方法项目关闭eslint or 重新启动。
