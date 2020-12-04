@@ -4,7 +4,6 @@ NX official website components by Vue.
 
 ### Use
 
-
 #### 按需引入
 
 ```
@@ -58,7 +57,7 @@ module.exports = {
 
 #### 响应式配置
 
-+ public/index.html
+- public/index.html
 
 ```
 const baseSize = 32 // 基准值
@@ -227,3 +226,58 @@ export default {
 </style>
 
 ```
+
+2. 重构 nx-bg
+
+> 一个组件只做一件事情，之前bg揉了太多琐碎逻辑,现在单独全部抽出来。
+
+- phoneVertical
+
+> 横屏手机图
+
+- phoneHorizaontal
+
+> 竖屏手机背景图
+
+- pc
+
+> Pc 端背景图
+
+- pad
+
+> pad 端图片
+
+###### 调用Demo
+
+```
+<template>
+  <div class="home">
+    <nx-bg
+      :pc="require('../assets/pc.png')"
+      :phoneVertical="require('../assets/pad.png')"
+      :phoneHorizaontal="require('../assets/phone.jpg')"
+    />
+    <!--
+      pc="require('../assets/pc.png')"
+
+     -->
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+
+export default {
+  name: 'Home'
+}
+</script>
+<style>
+  .home {
+    height: 100%;
+  }
+</style>
+```
+
+###### 遗留问题
+
++ addEventScreen方法中，执行addListener监听后。切换横竖会触发多次事件。有时间了修复。

@@ -54,30 +54,6 @@ export default {
     created() {
         this.initScreen()
         this.addEventScreen()
-        // const sqls = [
-
-        //	]
-
-        // function mediaMatches() {
-        //    if (sqls[0].matches) {
-        //        console.log('手机渲染 横屏幕') // do something...
-        //    } else if (sqls[1].matches) {
-        //        console.log('手机 竖屏 正常拿') // do something...
-        //    } else if (sqls[2].matches) {
-        //        console.log('pc端') // do something...
-        //    } else if (sqls[3].matches) {
-        //        console.log('pad端') // do something...
-        //    } else {
-        //        // 预留
-        //        console.log('>1200')
-        //    }
-        // }
-        // mediaMatches() // 页面首次加载
-
-        // for (var i = 0; i < sqls.length; i++) {
-        //    sqls[i].addListener(mediaMatches)
-        // }
-        // mqList = window.matchMedia(mediaQueryString)
     },
     methods: {
         initScreen() {
