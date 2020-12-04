@@ -1,17 +1,24 @@
 <template>
-  <div class="test-1">
-    NxIcon
-  </div>
+  <svg class="svg">
+    <use :href="iconName" />
+  </svg>
 </template>
-
 <script>
 export default {
-    name: 'NxIcon'
+    name: 'Icon',
+    props: {
+        name: String
+    },
+    computed: {
+        iconName() {
+            return `#${this.name}`
+        }
+    }
 }
 </script>
-
-<style>
-.test-1{
-	color:blue;
+<style lang="scss" scoped>
+.svg {
+  height: 100%;
+  width: 100%;
 }
 </style>

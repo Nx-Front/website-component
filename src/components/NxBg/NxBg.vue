@@ -7,15 +7,18 @@
       <div class="link-wapper">
         <slot :info="{ height:pcLinkHeight,width:pcLinkWidth }" />
       </div>
-      <div class="footer" :style="{fontSize}">
-        <span v-for="item in footerList" :key="item.text" @click="triggerFooterClick(item)">
-          {{ item.text }}
-        </span>
+      <div class="text-wapper">
+        <div class="footer" :style="{fontSize}">
+          <span v-for="item in footerList" :key="item.text" @click="triggerFooterClick(item)">
+            {{ item.text }}
+          </span>
 
+        </div>
+        <div class="copy-right" :style="{fontSize:copyRightSize}">
+          {{ copyRight }}
+        </div>
       </div>
-      <div class="copy-right" :style="{fontSize:copyRightSize}">
-        {{ copyRight }}
-      </div>
+
     </div>
   </div>
 </template>
@@ -41,7 +44,7 @@ export default {
             return this.screenWidth > 600 && this.screenWidth < 1440
         },
         isPc() {
-            return this.screenWidth > 1440
+            return this.screenWidth >= 1440
         },
         isPhone() {
             return this.screenWidth < 600
@@ -88,10 +91,23 @@ export default {
 .nx-wapper{
 	position: relative;
 	height: 100%;
+	width:100%;
 	background-position: center;
   background-size: cover;
 	background-repeat: no-repeat;
+	//min-height: calc(100vw/0.57);
+	.footer-wapper {
+			width:100%;
+			height: 20%;
+			position: absolute;
+			bottom: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+		}
 	.link-wapper {
+		height: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -101,26 +117,22 @@ export default {
 			width:100%;
 		}
 	}
-	.footer-wapper {
-		width:100%;
-		position: absolute;
-		bottom: .2rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	.footer {
-		margin-top:.4rem;
+	.text-wapper{
 		text-align: center;
-		font-size:1rem;
-		color:#667E95;
-		width: 100%;
-		cursor: pointer;
-	}
-	.copy-right {
-		margin-top:.1rem;
-		color:#A7B5C3;
+		.footer {
+			//margin-top:.4rem;
+			height: 50%;
+			//margin-top:10px;
+			text-align: center;
+			font-size:1rem;
+			color:#667E95;
+			width: 100%;
+			cursor: pointer;
+		}
+		.copy-right {
+			margin-top:.1rem;
+			color:#A7B5C3;
+		}
 	}
 }
 </style>
