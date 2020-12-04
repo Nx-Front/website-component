@@ -2,7 +2,7 @@
 
 NX official website components by Vue.
 
-### Use
+### UseAge
 
 #### 按需引入
 
