@@ -32,7 +32,7 @@ export default {
         padBg: String,
         phoneBg: String,
         copyRight: String
-    },
+		},
     computed: {
         screenWidth() {
             return window.screen.width
@@ -41,15 +41,16 @@ export default {
             return window.screen.height
         },
         isPad() {
-            return this.screenWidth > 600 && this.screenWidth < 1440
+            return this.screenWidth > 600 && this.screenWidth < 1366
         },
         isPc() {
-            return this.screenWidth >= 1440
+            return this.screenWidth >= 1366
         },
         isPhone() {
             return this.screenWidth < 600
         },
         backgroundImg() {
+						// pad 暂时当作 竖着拿手机吧 出现来需求再说 早晚得重构
             if (this.isPad) return this.padBg
             else if (this.isPhone) return this.phoneBg
             else return this.webBg
@@ -83,7 +84,20 @@ export default {
                 this.$emit('triggerClick', item)
             }
         }
-    }
+		},
+		//mounted() {
+		//	window.addEventListener(
+    //    "orientationchange"
+    //    , () => {
+		//			if(window.orientation=='-90' || window.orientation=='90') {
+		//				// 正常
+		//				this.backgroundImg = this.padBg
+		//			}else {
+		//				this.backgroundImg = this.phoneBg
+		//			}
+		//			this.$forceUpdate()
+		//		})
+		//},
 }
 </script>
 

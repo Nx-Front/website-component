@@ -4,6 +4,9 @@ NX official website components by Vue.
 
 ### Use
 
+
+#### 按需引入
+
 ```
 npm install -D babel-plugin-import
 ```
@@ -51,6 +54,23 @@ module.exports = {
   ]
 }
 
+```
+
+#### 响应式配置
+
++ public/index.html
+
+```
+const baseSize = 32 // 基准值
+function setRem() {
+	// 相对于750像素，获得一个缩放比例
+	const scale = document.documentElement.clientWidth / 750
+	document.documentElement.style.fontSize = baseSize * Math.min(scale, 2) + 'px'
+}
+setRem()
+window.onresize = function() {
+	setRem()
+}
 ```
 
 #### Vue Cli 3+

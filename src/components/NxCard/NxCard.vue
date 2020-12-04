@@ -4,7 +4,7 @@
   >
     <template v-for="item in cardList">
       <div
-        v-if="item.isShow || isPc"
+        v-if="item.isShow || isDevicePc"
         :key="item.key"
         :style="{
           height:cardHeight,
@@ -27,10 +27,10 @@
           </template>
         </div>
         <div class="right">
-          <div class="right-title">
+          <div class="right-title" :style="{fontSize:titleFontSize}">
             {{ item.title }}
           </div>
-          <div class="right-content">
+          <div class="right-content" :style="{fontSize}">
             {{ item.content }}
           </div>
         </div>
@@ -54,6 +54,14 @@ export default {
         }
     },
     computed: {
+				titleFontSize() {
+				  	if(this.isPc) {
+							return '16px'
+						}else if (this.isPad){
+							return '12px'
+						}
+						else return '.7rem'
+				},
         fontSize() {
             return this.isPc ? '20px' : '1rem'
         },
@@ -64,18 +72,36 @@ export default {
             return window.screen.height
         },
         isPad() {
-            return this.screenWidth > 600 && this.screenWidth < 1440
+            return this.screenWidth > 600 && this.screenWidth < 1366
         },
         iconSize() {
-            return this.isPc ? '60px' : '1rem'
+				  	if(this.isPc) {
+							return '.6rem'
+						}
+						else return ''
         },
         cardHeight() {
-            return this.isPc ? '100px' : ''
+					  if(this.isPc) {
+							return '1.2rem'
+						}else if (this.isPad){
+							return '2.2rem'
+						}
+						else return ''
         },
         cardWidth() {
-            return this.isPc ? '200px' : ''
+						if(this.isPc) {
+							return '4rem'
+						}else if (this.isPad) {
+							return '6rem'
+						}
+						else {
+							return ''
+						}
+				},
+				isPc() {
+            return this.screenWidth >= 1366
         },
-        isPc() {
+        isDevicePc() {
             const userAgentInfo = navigator.userAgent
             const Agents = [
                 'Android',
@@ -102,7 +128,7 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #fff;
   .nx-card {
@@ -124,7 +150,7 @@ export default {
       justify-content: center;
       align-items: center;
       .left-svg {
-        height: 3rem;
+        //height: 2.3rem;
         width: 3rem;
       }
       .left-icon {
@@ -146,11 +172,7 @@ export default {
         "Microsoft Yahei", "微软雅黑", Arial, sans-serif;
       .right-title {
         font-family: Georgia;
-        font-size: 0.2rem;
       }
-			.right-content {
-				font-size:0.4rem;
-			}
     }
   }
 }

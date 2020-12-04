@@ -18,7 +18,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .svg {
-  height: 100%;
+  height: 80%;
   width: 100%;
 }
 </style>
