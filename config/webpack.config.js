@@ -32,7 +32,10 @@ module.exports = {
     externals: ['vue'],
     resolve: {
         mainFiles: ['index'],
-        extensions: ['.js', '.vue', '.css']
+        extensions: ['.js', '.vue', '.css'],
+        alias: {
+            '@': path.resolve(__dirname, '../src')
+        }
     },
     optimization: {
 		    minimize: true,

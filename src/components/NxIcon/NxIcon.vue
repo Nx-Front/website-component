@@ -1,5 +1,5 @@
 <template>
-  <svg class="svg">
+  <svg :style="{ height:height,width:width }">
     <use :href="iconName" />
   </svg>
 </template>
@@ -7,7 +7,18 @@
 export default {
     name: 'Icon',
     props: {
-        name: String
+        name:{
+					type:String,
+					default:''
+				},
+				height:{
+					type:String,
+					default:'100%'
+				},
+				width:{
+					type:String,
+					default:'100%'
+				}
     },
     computed: {
         iconName() {
@@ -17,8 +28,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.svg {
-  height: 80%;
-  width: 100%;
-}
 </style>
