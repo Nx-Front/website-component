@@ -5,6 +5,7 @@
       height:cardHeight,
       width:cardWidth
     }"
+    @click="handleClickCard"
   >
     <div class="left">
       <template v-if="data.icon">
@@ -39,6 +40,7 @@
 <script>
 import NxIcon from '../NxIcon/NxIcon.vue'
 import adaptation from '@/helpers/mixins/adaptation'
+import { downloadFile } from '@/helpers/utils'
 export default {
     name: 'NxCard',
     components: {
@@ -137,6 +139,14 @@ export default {
                 'pad': this.padIconSIze
             }
             return iconSizeMap[this.currentDev]
+        }
+    },
+    methods: {
+        handleClickCard() {
+            if (this.data?.link) {
+                downloadFile(this.data.link)
+            }
+            this.$emit('click', this.data)
         }
     }
 }

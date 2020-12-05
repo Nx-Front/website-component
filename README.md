@@ -138,11 +138,207 @@ module.exports = {
 
 > 引入依赖可能会出现 ESlint 报错，暂时替代方法项目关闭 eslint or 重新启动。
 
+
+
+## 1. 重构 nx-bg
+
+### props && event
+
+#### props
+
+> 一个组件只做一件事情，之前bg揉了太多琐碎逻辑,现在单独全部抽出来。
+
+- phoneVertical
+
+> 横屏手机图
+
+- phoneHorizaontal
+
+> 竖屏手机背景图
+
+- pc
+
+> Pc 端背景图
+
+- pad
+
+> pad 端图片
+
+###### 调用Demo
+
+```
+<template>
+  <div class="home">
+    <nx-bg
+      :pc="require('../assets/pc.png')"
+      :phoneVertical="require('../assets/pad.png')"
+      :phoneHorizaontal="require('../assets/phone.jpg')"
+    />
+    <!--
+      pc="require('../assets/pc.png')"
+
+     -->
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+
+export default {
+  name: 'Home'
+}
+</script>
+<style>
+  .home {
+    height: 100%;
+  }
+</style>
+```
+
+###### 遗留问题
+
++ addEventScreen方法中，执行addListener监听后。切换横竖会触发多次事件。有时间了修复。
+
+
+## 2. NxCard
+
+### Props && Event
+
+#### Props
+
+###### data
+
++ title
+> 顶部文字内容。
+
++ body
+> 底部文字内容。
+
++ svg
+> 需要svg的图片(iconfont)。
+
++ icon
+> 字体(iconfont)。(如果存在icon属性则会忽略svg属性)
+
+###### phoneVerticalHeight，phoneHorizaontalHeight
+
+> 横向手机card高度，默认大小，可手动定义。
+> 竖向手机card高度，默认大小，可手动定义。
+
+###### pcHeight,padHeight
+
+> Pc card高度,Pad card高度
+
+###### phoneVerticalWidth,phoneHorizaontalWidth
+
+> 手机横竖屏宽度。
+
+###### pcWidth,padWidth
+
+> pad宽度。
+
+###### phoneVertIconSize，phoneHoriIconSize
+
+> 手机横竖屏幕icon大小。仅仅影响icon不影响svg。
+
+###### padIconSIze,pcIconSize
+
+> pad，pc图标大小。仅仅影响icon不影响svg。
+
+###### titleFontBg，bodyFontBg
+
+> 标题文字渐变色，body文字渐变色。
+
+#### Event
+
++ click(data)
+
+> 点击卡片触发click事件，接受参数为传入的data。
+> 如果存在data.link，那么会进行下载link。
+
+### 代码演示
+
+```
+
+data: {
+            type: Object,
+            default: () => {}
+        },
+        /* 以下props抽空整理出来成为Object */
+        phoneVerticalHeight: {
+            type: String,
+            default: ''
+        },
+        phoneHorizaontalHeight: {
+            type: String,
+            default: ''
+        },
+        pcHeight: {
+            type: String,
+            default: ''
+        },
+        padHeight: {
+            type: String,
+            default: ''
+        },
+        phoneVerticalWidth: {
+            type: String,
+            default: ''
+        },
+        phoneHorizaontalWidth: {
+            type: String,
+            default: ''
+        },
+        pcWidth: {
+            type: String,
+            default: ''
+        },
+        padWidth: {
+            type: String,
+            default: ''
+        },
+        /* icon大小 */
+        phoneVertIconSize: {
+            type: String,
+            default: ''
+        },
+        phoneHoriIconSize: {
+            type: String,
+            default: ''
+        },
+        pcIconSize: {
+            type: String,
+            default: ''
+        },
+        padIconSIze: {
+            type: String,
+            default: ''
+        },
+        /* title字体颜色 */
+        titleFontBg: {
+            type: String,
+            default: 'to top, #dfe9f3 0%, white 100%'
+        },
+        bodyFontBg: {
+            type: String,
+            default: 'to right, #00dbde 0%, #fc00ff 100%'
+}
+
+```
+
+
+
+# Old Component
+
+> 跑在就项目中的component。
+
 1. NxBg
 
 > 背景图响应式容器
 
-##### 代码演示
+#### props & event
+
+#### props
 
 - footerList: Array: 底部可点击 list。
 - webBg: String: Pc 下的背景图。
@@ -150,9 +346,10 @@ module.exports = {
 - phoneBg: String: phone 下的背景图。
 - copyRight: String: 底部 copyRight。
 
-* 默认 slot: 接受的插槽(注意是作用域，暴露应该设置的宽度和高度)。
-
 > 具体参见 Hunter 官网。
+
+
+##### 代码演示
 
 ```
 
@@ -226,58 +423,3 @@ export default {
 </style>
 
 ```
-
-2. 重构 nx-bg
-
-> 一个组件只做一件事情，之前bg揉了太多琐碎逻辑,现在单独全部抽出来。
-
-- phoneVertical
-
-> 横屏手机图
-
-- phoneHorizaontal
-
-> 竖屏手机背景图
-
-- pc
-
-> Pc 端背景图
-
-- pad
-
-> pad 端图片
-
-###### 调用Demo
-
-```
-<template>
-  <div class="home">
-    <nx-bg
-      :pc="require('../assets/pc.png')"
-      :phoneVertical="require('../assets/pad.png')"
-      :phoneHorizaontal="require('../assets/phone.jpg')"
-    />
-    <!--
-      pc="require('../assets/pc.png')"
-
-     -->
-  </div>
-</template>
-
-<script>
-// @ is an alias to /src
-
-export default {
-  name: 'Home'
-}
-</script>
-<style>
-  .home {
-    height: 100%;
-  }
-</style>
-```
-
-###### 遗留问题
-
-+ addEventScreen方法中，执行addListener监听后。切换横竖会触发多次事件。有时间了修复。
