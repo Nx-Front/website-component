@@ -1,3 +1,4 @@
+// 文件下载
 const downloadFile = function(sUrl) {
     // sUrl = "/api" + sUrl;
     // iOS devices do not support downloading. We have to inform user about this.
@@ -40,6 +41,14 @@ downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1
 downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1
 downloadFile.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
 
+// 邮件发送
+const emailNode = document.createElement('a')
+const sendEmail = (email) => {
+    emailNode.setAttribute('href', `mailto:${email}`)
+    emailNode.click()
+}
+
 export {
-    downloadFile
+    downloadFile,
+    sendEmail
 }

@@ -88,65 +88,13 @@ module.exports = {
 
 ---
 
-### Development
-
-### Eslint in Vscode
-
-###### install
-
-- EsLint
-- vetur
-- Prettier - Code formatter
-
-###### VSCode config
-
-```
-{
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
-    "editor.fontSize": 12,
-    "editor.wordWrap": "on",
-    "editor.formatOnSave": false,
-    "emmet.syntaxProfiles": {
-        "javascript": "jsx",
-        "vue": "html",
-        "vue-html": "html"
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true,
-        "source.fixAll.eslint": true
-    },
-    "eslint.run": "onSave",
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "html",
-        "vue-html",
-        "vue"
-    ],
-    "eslint.options": {
-        // "plugins": ["html"],
-        "extensions": [".js", ".vue"]
-    },
-    "editor.tabSize": 2,
-    "files.autoSave": "off",
-}
-```
-
-> 引入依赖可能会出现 ESlint 报错，暂时替代方法项目关闭 eslint or 重新启动。
-
-
-
-## 1. 重构 nx-bg
+## 1.NxBg(重构)
 
 ### props && event
 
 #### props
 
-> 一个组件只做一件事情，之前bg揉了太多琐碎逻辑,现在单独全部抽出来。
+> 一个组件只做一件事情，之前 bg 揉了太多琐碎逻辑,现在单独全部抽出来。
 
 - phoneVertical
 
@@ -164,7 +112,7 @@ module.exports = {
 
 > pad 端图片
 
-###### 调用Demo
+###### 调用 Demo
 
 ```
 <template>
@@ -197,10 +145,9 @@ export default {
 
 ###### 遗留问题
 
-+ addEventScreen方法中，执行addListener监听后。切换横竖会触发多次事件。有时间了修复。
+- addEventScreen 方法中，执行 addListener 监听后。切换横竖会触发多次事件。有时间了修复。
 
-
-## 2. NxCard
+## 2. NxCard(重构)
 
 ### Props && Event
 
@@ -208,26 +155,29 @@ export default {
 
 ###### data
 
-+ title
-> 顶部文字内容。
+- title
 
-+ body
-> 底部文字内容。
+  > 顶部文字内容。
 
-+ svg
-> 需要svg的图片(iconfont)。
+- body
 
-+ icon
-> 字体(iconfont)。(如果存在icon属性则会忽略svg属性)
+  > 底部文字内容。
+
+- svg
+
+  > 需要 svg 的图片(iconfont)。
+
+- icon
+  > 字体(iconfont)。(如果存在 icon 属性则会忽略 svg 属性)
 
 ###### phoneVerticalHeight，phoneHorizaontalHeight
 
-> 横向手机card高度，默认大小，可手动定义。
-> 竖向手机card高度，默认大小，可手动定义。
+> 横向手机 card 高度，默认大小，可手动定义。
+> 竖向手机 card 高度，默认大小，可手动定义。
 
 ###### pcHeight,padHeight
 
-> Pc card高度,Pad card高度
+> Pc card 高度,Pad card 高度
 
 ###### phoneVerticalWidth,phoneHorizaontalWidth
 
@@ -235,26 +185,26 @@ export default {
 
 ###### pcWidth,padWidth
 
-> pad宽度。
+> pad 宽度。
 
 ###### phoneVertIconSize，phoneHoriIconSize
 
-> 手机横竖屏幕icon大小。仅仅影响icon不影响svg。
+> 手机横竖屏幕 icon 大小。仅仅影响 icon 不影响 svg。
 
 ###### padIconSIze,pcIconSize
 
-> pad，pc图标大小。仅仅影响icon不影响svg。
+> pad，pc 图标大小。仅仅影响 icon 不影响 svg。
 
 ###### titleFontBg，bodyFontBg
 
-> 标题文字渐变色，body文字渐变色。
+> 标题文字渐变色，body 文字渐变色。
 
 #### Event
 
-+ click(data)
+- click(data)
 
-> 点击卡片触发click事件，接受参数为传入的data。
-> 如果存在data.link，那么会进行下载link。
+> 点击卡片触发 click 事件，接受参数为传入的 data。
+> 如果存在 data.link，那么会进行下载 link。
 
 ### 代码演示
 
@@ -324,13 +274,42 @@ data: {
             default: 'to right, #00dbde 0%, #fc00ff 100%'
 }
 
+
 ```
 
+## 3. NxFooter
 
+### Props & Event
+
+#### Props
+
+##### copyRight 
+
+> 底部copyright，string。
+
+##### data
+
+> 底部data.
+
++ text 内容
+
++ path 跳转页面路由。(存在该属性，点击直接跳转)
+
++ email 存在该属性点击直接吊起邮箱。
+
+##### Event
+
++ click 事件，向上触发为点击底部元素。
+
+## 4. NxArt
+
+> 提供slot直接包裹即可。等待重构。
+
+---
 
 # Old Component
 
-> 跑在就项目中的component。
+> 跑在就项目中的 component。
 
 1. NxBg
 
@@ -347,7 +326,6 @@ data: {
 - copyRight: String: 底部 copyRight。
 
 > 具体参见 Hunter 官网。
-
 
 ##### 代码演示
 
@@ -423,3 +401,55 @@ export default {
 </style>
 
 ```
+
+---
+
+### Development
+
+### Eslint in Vscode
+
+###### install
+
+- EsLint
+- vetur
+- Prettier - Code formatter
+
+###### VSCode config
+
+```
+{
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.fontSize": 12,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": false,
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "vue": "html",
+        "vue-html": "html"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true,
+        "source.fixAll.eslint": true
+    },
+    "eslint.run": "onSave",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        "vue-html",
+        "vue"
+    ],
+    "eslint.options": {
+        // "plugins": ["html"],
+        "extensions": [".js", ".vue"]
+    },
+    "editor.tabSize": 2,
+    "files.autoSave": "off",
+}
+```
+
+> 引入依赖可能会出现 ESlint 报错，暂时替代方法项目关闭 eslint or 重新启动。
