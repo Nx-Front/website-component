@@ -45,41 +45,42 @@ module.exports = {
         ]
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        },
-        {
-            test: /\.vue$/,
-            loader: 'vue-loader'
-        },
-        {
-            test: /\.css$/,
-            use: [
-                {
-                    loader: MiniCssExtractPlugin.loader
-                },
-                {
-                    loader: 'css-loader'
-                }
-            ]
-        },
-        {
-            test: /\.scss$/,
-            use: [
-                MiniCssExtractPlugin.loader,
-                {
-                    loader: 'css-loader',
-                    options: {
-                        importLoaders: 2
-                        // modules:true
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
                     }
-                },
-                'postcss-loader',
-                'sass-loader'
-            ]
-        }
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2
+                        // modules:true
+                        }
+                    },
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            }
         ]
     },
     plugins: [
