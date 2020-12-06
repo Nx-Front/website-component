@@ -4,6 +4,12 @@ NX official website components by Vue.
 
 ### UseAge
 
+`npm install nx-website-component`
+
+`yarn add nx-website-component`
+
+> version仅支持Vue2.x，并不兼容Vue3.0版本。
+
 #### 按需引入
 
 ```
