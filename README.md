@@ -24,7 +24,7 @@ module.exports = {
     [
       "import",
       {
-        libraryName: "Nx-Component",
+        libraryName: "nx-website-component",
         libraryDirectory: "lib",
         styleLibraryDirectory: "lib/theme-chalk",
         camel2DashComponentName: false,
@@ -32,36 +32,9 @@ module.exports = {
     ]
   ]
 }
-
 ```
 
-或者：
-
-```
-npm install babel-plugin-component -D
-```
-
-```
-
-module.exports = {
-  plugins:[
-    [
-    "component",
-      {
-        libraryName: "nx-component",
-        styleLibrary: {
-          name:"theme-chalk",
-          base:false
-        },
-        camel2Dash:false
-      }
-    ]
-  ]
-}
-
-```
-
-#### 响应式配置
+#### index.html 响应式配置
 
 - public/index.html
 
@@ -80,16 +53,33 @@ window.onresize = function() {
 
 #### Vue Cli 3+
 
-> babel-plugin-import 需要配置修改 webpackextensions 配置，否则会无法读取 css 文件后缀。
+##### 引入源码版本
+> nx-website-component 默认在 webpack 环境下会引入未编译的源码版本，如果你正在使用官方的 Vue CLI 来创建项目，可能会遇到默认配置把 node_modules 中的文件排除在 Babel 转译范围以外的问题。请按如下方法修改配置：
+
+当使用 Vue CLI 3+ 时，需要在 vue.config.js 中的 transpileDependencies 增加 nx-website-component，如下：
 
 ```
 module.exports = {
-    configureWebpack: {
-      resolve: {
-      extensions: ['.js', '.vue', '.css', '.json']
-    }
-  }
+  transpileDependencies:[
+    'nx-website-component'
+  ]
 }
+```
+
+---
+
+###### 直接引用
+```
+import webSite from "nx-website-component'
+import 'nx-website-component/lib/hteme-chalk'
+
+Vue.use(webSite)
+```
+
+###### 按需引用
+```
+import { NxCard } from "nx-website-component"
+Vue.use(NxCard)
 ```
 
 ---
