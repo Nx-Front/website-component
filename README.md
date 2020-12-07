@@ -4,11 +4,26 @@ NX official website components by Vue.
 
 ### UseAge
 
-`npm install nx-website-component`
+#### install
+
+`npm install nx-website-component --save`
 
 `yarn add nx-website-component`
 
-> version仅支持Vue2.x，并不兼容Vue3.0版本。
+> version 1.x 仅支持 Vue2.x，暂不兼容 Vue3.0 版本。
+
+---
+
+#### 直接引入
+
+```
+import webSite from "nx-website-component'
+import 'nx-website-component/lib/theme-chalk'
+
+Vue.use(webSite)
+```
+
+
 
 #### 按需引入
 
@@ -34,7 +49,17 @@ module.exports = {
 }
 ```
 
-#### index.html 响应式配置
+> .babelrc
+
+```
+import { NxCard } from "nx-website-component"
+Vue.use(NxCard)
+```
+
+> main.js
+
+
+#### 响应式配置
 
 - public/index.html
 
@@ -53,8 +78,9 @@ window.onresize = function() {
 
 #### Vue Cli 3+
 
-##### 引入源码版本
-> nx-website-component 默认在 webpack 环境下会引入未编译的源码版本，如果你正在使用官方的 Vue CLI 来创建项目，可能会遇到默认配置把 node_modules 中的文件排除在 Babel 转译范围以外的问题。请按如下方法修改配置：
+##### 引入源码版本(兼容低版本 IE)
+
+> 当低版本浏览器下使用插件报错的情况需要额外跟随项目中的 babel 进行转译。
 
 当使用 Vue CLI 3+ 时，需要在 vue.config.js 中的 transpileDependencies 增加 nx-website-component，如下：
 
@@ -66,21 +92,7 @@ module.exports = {
 }
 ```
 
----
-
-###### 直接引用
-```
-import webSite from "nx-website-component'
-import 'nx-website-component/lib/hteme-chalk'
-
-Vue.use(webSite)
-```
-
-###### 按需引用
-```
-import { NxCard } from "nx-website-component"
-Vue.use(NxCard)
-```
+> 兼容低版本浏览器配置处理。
 
 ---
 
@@ -279,27 +291,27 @@ data: {
 
 #### Props
 
-##### copyRight 
+##### copyRight
 
-> 底部copyright，string。
+> 底部 copyright，string。
 
 ##### data
 
-> 底部data.
+> 底部 data.
 
-+ text 内容
+- text 内容
 
-+ path 跳转页面路由。(存在该属性，点击直接跳转)
+- path 跳转页面路由。(存在该属性，点击直接跳转)
 
-+ email 存在该属性点击直接吊起邮箱。
+- email 存在该属性点击直接吊起邮箱。
 
 ##### Event
 
-+ click 事件，向上触发为点击底部元素。
+- click 事件，向上触发为点击底部元素。
 
 ## 4. NxArt
 
-> 提供slot直接包裹即可。等待重构。
+> 提供 slot 直接包裹即可。等待重构。
 
 ---
 

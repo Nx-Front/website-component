@@ -1,6 +1,6 @@
 {
     "name": "nx-website-component",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Nx-Components for Vue.",
     "main": "lib/index.js",
     "scripts": {
