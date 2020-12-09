@@ -28,25 +28,25 @@ Vue.use(webSite)
 #### 按需引入
 
 ```
-npm install -D babel-plugin-import
+npm install -D babel-plugin-component
 ```
 
 babel.config.js
 
 ```
-module.exports = {
-  plugins: [
+plugins:[
     [
-      "import",
+    "component",
       {
         libraryName: "nx-website-component",
-        libraryDirectory: "lib",
-        styleLibraryDirectory: "lib/theme-chalk",
-        camel2DashComponentName: false,
+        styleLibrary: {
+          name:"theme-chalk",
+          base:false
+        },
+        camel2Dash:false
       }
     ]
   ]
-}
 ```
 
 > .babelrc
