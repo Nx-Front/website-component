@@ -1,12 +1,5 @@
-// 文件下载
-const downloadFile = function(sUrl) {
-    // sUrl = "/api" + sUrl;
-    // iOS devices do not support downloading. We have to inform user about this.
-    if (/(iP)/g.test(navigator.userAgent)) {
-        alert('Your device does not support files downloading. Please try again in desktop browser.')
-        return false
-    }
 
+const downloadFile = function(sUrl) {
     // If in Chrome or Safari - download via virtual link click
     if (downloadFile.isChrome || downloadFile.isSafari || downloadFile.isFirefox) {
         // Creating new link node.
@@ -27,11 +20,6 @@ const downloadFile = function(sUrl) {
             link.dispatchEvent(e)
             return true
         }
-    }
-
-    // Force file download (whether supported by server).
-    if (sUrl.indexOf('?') === -1) {
-        sUrl += '?download'
     }
 
     window.open(sUrl, '_self')

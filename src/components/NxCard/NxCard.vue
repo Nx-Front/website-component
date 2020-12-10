@@ -105,7 +105,7 @@ export default {
         /* title字体颜色 */
         titleFontBg: {
             type: String,
-            default: 'to top, #dfe9f3 0%, white 100%'
+            default: 'to right, rgb(223, 233, 243) 0%, rgb(255, 255, 255) 100%'
         },
         bodyFontBg: {
             type: String,
@@ -158,8 +158,9 @@ export default {
 		cursor: pointer;
 		background:black;
 		color:#fff;
-		&:hover {
-			transform: scale(1.02);
+		div:focus{
+			outline:none;
+			user-select: none;
 		}
 		.left{
 			width:30%;
@@ -174,12 +175,10 @@ export default {
 			font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
 			.title {
 				flex:1;
-				display: flex;
-				align-items: flex-end;
-				font-family: 'Times New Roman';
-				justify-content: flex-start;
+				transform: translateY(40%);
+				font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
 			}
-			.title-gradient {
+			.title-gradient{
 				background-clip:text;
 				font-style:italic;
 				color: transparent;
@@ -204,6 +203,10 @@ export default {
 			width:3.5rem;
 			height:1rem;
 			border-radius: .2rem;
+			&:hover {
+				// 只在PC端存在 否则所有扩大1.2倍 手机 真机测试会有问题 focus后背景色变大 出现边框
+				transform: scale(1.02);
+			}
 			.left {
 				.left-icon{
 					font-size:.56rem;
