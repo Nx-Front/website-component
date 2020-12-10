@@ -104,6 +104,13 @@ module.exports = {
 
 > 一个组件只做一件事情，之前 bg 揉了太多琐碎逻辑,现在单独全部抽出来。
 
+|   props   |      |      |
+| ---- | ---- | ---- |
+|   phoneVertical   |   横屏手机图   |  require('../assets/pc.png')    |
+|  phoneHorizaontal    |   竖屏手机背景图   |      |
+|    pc  |    Pc 端背景图  |      |
+| pad | pad 端图片 | |
+
 - phoneVertical
 
 > 横屏手机图
