@@ -18,8 +18,8 @@
         <nx-icon
           class="right-svg"
           :name="data.svg"
-          height="65%"
-          width="65%"
+          height="70%"
+          width="70%"
         />
       </template>
 
@@ -163,7 +163,7 @@ export default {
 			user-select: none;
 		}
 		.left{
-			width:30%;
+			width:40%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -175,6 +175,7 @@ export default {
 			font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
 			.title {
 				flex:1;
+				text-align: left;
 				transform: translateY(40%);
 				font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
 			}
@@ -209,7 +210,8 @@ export default {
 			}
 			.left {
 				.left-icon{
-					font-size:.56rem;
+					//font-size:.56rem;
+					font-size:.67rem;
 				}
 			}
 			.right {
@@ -230,7 +232,7 @@ export default {
 		width: 6.4rem;
 		.left {
 			.left-icon {
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 			}
 		}
 		.title {
@@ -251,7 +253,7 @@ export default {
 		background-color:black;
 		.left {
 			.left-icon {
-				font-size:2rem;
+				font-size:2.6rem;
 			}
 		}
 	}
@@ -265,7 +267,7 @@ export default {
 		width: 6.4rem;
 		.left {
 			.left-icon {
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 			}
 		}
 		.title {
