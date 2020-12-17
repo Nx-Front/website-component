@@ -16,6 +16,7 @@ export default {
 				@if $i == 1 {
 					text-align:center;
 				}
+				font-family: "Avenir", "Avenir Medium", sans-serif, 'Helvetica Neue';
 				font-weight: 300;
 				color:#333;
 			}
