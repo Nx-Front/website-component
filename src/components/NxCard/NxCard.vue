@@ -2,8 +2,9 @@
   <div
     class="nx-card"
     :style="{
-      height:cardHeight,
-      width:cardWidth
+      height: cardHeight,
+      width: cardWidth,
+      backgroundColor: backgroundColor,
     }"
     @click="handleClickCard"
   >
@@ -11,28 +12,26 @@
       <template v-if="data.icon">
         <i
           :class="`iconfont icon-${data.icon} left-icon`"
-          :style="{ fontSize:iconSize }"
+          :style="{ fontSize: iconSize, color: iconColor }"
         />
       </template>
       <template v-else-if="data.svg">
-        <nx-icon
-          class="right-svg"
-          :name="data.svg"
-          height="70%"
-          width="70%"
-        />
+        <nx-icon class="right-svg" :name="data.svg" height="70%" width="70%" />
       </template>
-
     </div>
     <div class="right">
       <div
         class="title title-gradient"
-        :style="{ backgroundImage:`linear-gradient(${titleFontBg})`}"
-      >{{ data.title }}</div>
+        :style="{ backgroundImage: `linear-gradient(${titleFontBg})` }"
+      >
+        {{ data.title }}
+      </div>
       <div
         class="body body-gradient"
-        :style="{ backgroundImage:`linear-gradient(${bodyFontBg})`}"
-      >{{ data.body }}</div>
+        :style="{ backgroundImage: `linear-gradient(${bodyFontBg})` }"
+      >
+        {{ data.body }}
+      </div>
     </div>
   </div>
 </template>
@@ -110,6 +109,14 @@ export default {
         bodyFontBg: {
             type: String,
             default: 'to right, #00dbde 0%, #fc00ff 100%'
+        },
+        backgroundColor: {
+            type: String,
+            default: ''
+        },
+        iconColor: {
+            type: String,
+            default: ''
         }
     },
     computed: {
@@ -117,8 +124,8 @@ export default {
             const heightMap = {
                 'phone-vertical': this.phoneVerticalHeight,
                 'phone-horizontal': this.phoneHorizaontalHeight,
-                'pc': this.pcHeight,
-                'pad': this.padHeight
+                pc: this.pcHeight,
+                pad: this.padHeight
             }
             return heightMap[this.currentDev]
         },
@@ -126,8 +133,8 @@ export default {
             const widthMap = {
                 'phone-vertical': this.phoneVerticalWidth,
                 'phone-horizontal': this.phoneHorizaontalWidth,
-                'pc': this.pcWidth,
-                'pad': this.padWidth
+                pc: this.pcWidth,
+                pad: this.padWidth
             }
             return widthMap[this.currentDev]
         },
@@ -135,8 +142,8 @@ export default {
             const iconSizeMap = {
                 'phone-vertical': this.phoneVertIconSize,
                 'phone-horizontal': this.phoneHoriIconSize,
-                'pc': this.pcIconSize,
-                'pad': this.padIconSIze
+                pc: this.pcIconSize,
+                pad: this.padIconSIze
             }
             return iconSizeMap[this.currentDev]
         }
@@ -153,129 +160,127 @@ export default {
 </script>
 
 <style lang='scss'>
-	.nx-card {
-		display: flex;
-		cursor: pointer;
-		background:black;
-		color:#fff;
-		div:focus{
-			outline:none;
-			user-select: none;
-		}
-		.left{
-			width:40%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.right {
-			flex:1;
-			display: flex;
-			flex-direction: column;
-			font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
-			.title {
-				flex:1;
-				text-align: left;
-				transform: translateY(40%);
-				font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
-			}
-			.title-gradient{
-				background-clip:text;
-				font-style:italic;
-				color: transparent;
-			}
-			.body {
-				flex:1;
-				text-align: left;
-				font-weight: 600;
-			}
-			.body-gradient{
-				background-clip:text;
-				color: transparent;
-			}
-		}
-	}
+.nx-card {
+  display: flex;
+  cursor: pointer;
+  background: black;
+  color: #fff;
+  div:focus {
+    outline: none;
+    user-select: none;
+  }
+  .left {
+    width: 36%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-family: "Times New Roman", "Courier New", Helvetica, "Hiragino Sans GB",
+      "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
+    .title {
+      flex: 1;
+      text-align: left;
+      transform: translateY(40%);
+      font-family: "Times New Roman", "Courier New", Helvetica,
+        "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
+    }
+    .title-gradient {
+      background-clip: text;
+      font-style: italic;
+      color: transparent;
+    }
+    .body {
+      flex: 1;
+      text-align: left;
+      font-weight: 600;
+    }
+    .body-gradient {
+      background-clip: text;
+      color: transparent;
+    }
+  }
+}
 
-	/* 750一个缩放比例 */
-	/* card 兼容pc和移动 */
-	/* pc样式 */
-	@media screen and (min-width:1366px) {
-		.nx-card {
-			width:3.5rem;
-			height:1rem;
-			border-radius: .2rem;
-			&:hover {
-				// 只在PC端存在 否则所有扩大1.2倍 手机 真机测试会有问题 focus后背景色变大 出现边框
-				transform: scale(1.02);
-			}
-			.left {
-				.left-icon{
-					//font-size:.56rem;
-					font-size:.67rem;
-				}
-			}
-			.right {
-				.title{
-					font-size: .25rem;
-				}
-				.body{
-					font-size:.25rem;
-				}
-			}
-		}
-	}
-/* pad格式 暂时不处理 业务没有pad 当作手机横屏处理 */
-@media screen and (min-width:600px) and (max-width:960px) {
-	.nx-card {
-		border-radius: .5rem;
-		height: 1.8rem;
-		width: 6.4rem;
-		.left {
-			.left-icon {
-				font-size: 1.4rem;
-			}
-		}
-		.title {
-			font-size: .4rem;
-		}
-		.body {
-			font-size: .6rem;
-		}
-	}
+@media screen and (min-width: 1366px) {
+  .nx-card {
+    width: 3.5rem;
+    height: 1rem;
+    border-radius: 0.2rem;
+    &:hover {
+      // 只在PC端存在 否则所有扩大1.2倍 手机 真机测试会有问题 focus后背景色变大 出现边框
+      transform: scale(1.02);
+    }
+    .left {
+      .left-icon {
+        font-size: 0.67rem;
+      }
+    }
+    .right {
+      .title {
+        font-size: 0.25rem;
+      }
+      .body {
+        font-size: 0.25rem;
+      }
+    }
+  }
+}
+// pad格式 暂时不处理 业务没有pad 当作PC处理
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+  .nx-card {
+    border-radius: 0.5rem;
+    height: 1.8rem;
+    width: 6.4rem;
+    .left {
+      .left-icon {
+        font-size: 1.4rem;
+      }
+    }
+    .title {
+      font-size: 0.4rem;
+    }
+    .body {
+      font-size: 0.6rem;
+    }
+  }
 }
 
 /* 所有手机竖屏 正常 */
-@media screen and (max-width:960px) and (orientation: portrait) {
-	.nx-card {
-		border-radius: .5rem;
-		height:3.6rem;
-		width:12.4rem;
-		background-color:black;
-		.left {
-			.left-icon {
-				font-size:2.6rem;
-			}
-		}
-	}
+@media screen and (max-width: 769px) and (orientation: portrait) {
+  .nx-card {
+    border-radius: 0.5rem;
+		height: 3rem;
+    width: 12rem;
+    background-color: black;
+    .left {
+      .left-icon {
+        font-size: 2.6rem;
+      }
+    }
+  }
 }
 
 /* 所有手机横屏 */
-@media screen and (max-width:960px) and (orientation: landscape) {
-	.nx-card {
-		border-radius: .2rem;
-		height: 1.8rem;
-		width: 6.4rem;
-		.left {
-			.left-icon {
-				font-size: 1.4rem;
-			}
-		}
-		.title {
-			font-size: .4rem;
-		}
-		.body {
-			font-size: .6rem;
-		}
-	}
+@media screen and (max-width: 769px) and (orientation: landscape) {
+  .nx-card {
+    border-radius: 0.2rem;
+    height: 1.8rem;
+    width: 6.4rem;
+    .left {
+      .left-icon {
+        font-size: 1.4rem;
+      }
+    }
+    .title {
+      font-size: 0.4rem;
+    }
+    .body {
+      font-size: 0.6rem;
+    }
+  }
 }
 </style>

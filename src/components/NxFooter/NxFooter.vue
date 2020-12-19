@@ -43,7 +43,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .nx-footer {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +76,7 @@ export default {
     }
   }
 }
-@media screen and (min-width: 600px) and (max-width: 960px) {
+@media screen and (min-width: 769px) and (max-width: 1366px) {
   .nx-footer {
     bottom: 0.1rem;
     font-size: 0.5rem;
@@ -88,11 +88,12 @@ export default {
     }
   }
 }
-@media screen and (max-width: 960px) and (orientation: portrait) {
+// 竖屏幕
+@media screen and (max-width: 769px) and (orientation: portrait) {
   .nx-footer {
     bottom: 0.1rem;
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: .8rem;
+    line-height: 1rem;
     .item {
       margin: 0 0.1rem;
     }
@@ -101,7 +102,7 @@ export default {
     }
   }
 }
-@media screen and (max-width: 960px) and (orientation: landscape) {
+@media screen and (max-width: 769px) and (orientation: landscape) {
   .nx-footer {
     bottom: 0.1rem;
     font-size: 0.5rem;
