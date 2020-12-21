@@ -77,14 +77,15 @@ export default {
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1366px) {
-  .nx-footer {
+	.nx-footer {
     bottom: 0.1rem;
-    font-size: 0.5rem;
+    font-size: 0.26rem;
+    line-height: 0.36rem;
     .item {
-      margin: 0 0.1rem;
+      margin: 0 0.06rem;
     }
     .copy-right {
-      font-size: 0.3rem;
+      font-size: 0.16rem;
     }
   }
 }

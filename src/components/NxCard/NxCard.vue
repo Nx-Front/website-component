@@ -232,19 +232,19 @@ export default {
 // pad格式 暂时不处理 业务没有pad 当作PC处理
 @media screen and (min-width: 769px) and (max-width: 1366px) {
   .nx-card {
-    border-radius: 0.5rem;
-    height: 1.8rem;
-    width: 6.4rem;
+    border-radius: 0.2rem;
+    height: 1.2rem;
+    width: 4.2rem;
     .left {
       .left-icon {
-        font-size: 1.4rem;
+        font-size: .8rem;
       }
     }
     .title {
-      font-size: 0.4rem;
+      font-size: 0.2rem;
     }
     .body {
-      font-size: 0.6rem;
+      font-size: 0.4rem;
     }
   }
 }
