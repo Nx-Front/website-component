@@ -20,9 +20,11 @@
       </template>
     </div>
     <div class="right">
+      <!-- safari渐变存在bug -->
       <div
-        class="title title-gradient"
-        :style="{ backgroundImage: `linear-gradient(${titleFontBg})` }"
+        class="title"
+        :class="isSafari ? '' : 'title-gradient'"
+        :style="{ backgroundImage: isSafari ? '' : `linear-gradient(${titleFontBg})` }"
       >
         {{ data.title }}
       </div>
@@ -146,7 +148,13 @@ export default {
                 pad: this.padIconSIze
             }
             return iconSizeMap[this.currentDev]
+        },
+        isSafari() {
+            return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
         }
+    },
+    created() {
+        console.log(this.isSafari, 'isSafari')
     },
     methods: {
         handleClickCard() {
