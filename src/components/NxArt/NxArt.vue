@@ -59,7 +59,7 @@ export default {
       line-height: 0.5rem;
     }
     p {
-      text-indent: 0.6rem;
+      //text-indent: 0.6rem;
     }
     li > p {
       text-indent: 0;
@@ -97,7 +97,7 @@ export default {
       line-height: 1.2rem;
     }
     p {
-      text-indent: 1rem;
+      //text-indent: 1rem;
     }
     li > p {
       text-indent: 0;
@@ -135,7 +135,7 @@ export default {
       line-height: 1.2rem;
     }
     p {
-      text-indent: 1rem;
+      //text-indent: 1rem;
     }
     li > p {
       text-indent: 0;
@@ -173,7 +173,7 @@ export default {
       line-height: 1.2rem;
     }
     p {
-      text-indent: 1rem;
+      //text-indent: 1rem;
     }
     li > p {
       text-indent: 0;

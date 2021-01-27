@@ -23,15 +23,13 @@
       <!-- safari渐变存在bug -->
       <div
         class="title"
-        :class="isSafari ? '' : 'title-gradient'"
-        :style="{ backgroundImage: isSafari ? '' : `linear-gradient(${titleFontBg})` }"
+        :style="{
+          color: `${titleFontBg}`,
+        }"
       >
         {{ data.title }}
       </div>
-      <div
-        class="body body-gradient"
-        :style="{ backgroundImage: `linear-gradient(${bodyFontBg})` }"
-      >
+      <div class="body" :style="{ color: `${bodyFontBg}` }">
         {{ data.body }}
       </div>
     </div>
@@ -150,7 +148,10 @@ export default {
             return iconSizeMap[this.currentDev]
         },
         isSafari() {
-            return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+            return (
+                /Safari/.test(navigator.userAgent) &&
+        !/Chrome/.test(navigator.userAgent)
+            )
         }
     },
     created() {
@@ -192,14 +193,15 @@ export default {
     .title {
       flex: 1;
       text-align: left;
+			font-style: italic;
       transform: translateY(40%);
       font-family: "Times New Roman", "Courier New", Helvetica,
         "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Arial, sans-serif;
     }
     .title-gradient {
-      background-clip: text;
-      font-style: italic;
-      color: transparent;
+      //background-clip: text;
+      //font-style: italic;
+      //color: transparent;
     }
     .body {
       flex: 1;
@@ -207,8 +209,8 @@ export default {
       font-weight: 600;
     }
     .body-gradient {
-      background-clip: text;
-      color: transparent;
+      //background-clip: text;
+      //color: transparent;
     }
   }
 }
@@ -245,7 +247,7 @@ export default {
     width: 4.2rem;
     .left {
       .left-icon {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
     .title {
@@ -261,7 +263,7 @@ export default {
 @media screen and (max-width: 769px) and (orientation: portrait) {
   .nx-card {
     border-radius: 0.5rem;
-		height: 3rem;
+    height: 3rem;
     width: 12rem;
     background-color: black;
     .left {
