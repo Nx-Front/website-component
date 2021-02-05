@@ -11,8 +11,11 @@ const resolve = () => path.resolve(__dirname, '../src/components')
 
 function getComponentEntries() {
     const files = fs.readdirSync(resolve(path))
-    files.forEach(input => {
-        const inputPath = path.join(__dirname, `../src/components/${input}/index.js`)
+    files.forEach((input) => {
+        const inputPath = path.join(
+            __dirname,
+            `../src/components/${input}/index.js`
+        )
         inputEntry[input] = inputPath
     })
 }
@@ -38,11 +41,8 @@ module.exports = {
         }
     },
     optimization: {
-		    minimize: true,
-        minimizer: [
-            new TerserPlugin(),
-            new CssMinimizerPlugin()
-        ]
+        minimize: true,
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()]
     },
     module: {
         rules: [
@@ -74,11 +74,23 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 2
-                        // modules:true
+                            // modules:true
                         }
                     },
                     'postcss-loader',
                     'sass-loader'
+                ]
+            },
+            {
+                test: /\.ttc$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: './theme-chalk/',
+                            publicPath: './'
+                        }
+                    }
                 ]
             }
         ]

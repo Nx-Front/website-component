@@ -1,3 +1,4 @@
+import './assets/font.scss'
 import NxIcon from './components/NxIcon/NxIcon'
 import NxCard from './components/NxCard/NxCard'
 import NxBg from './components/NxBg/NxBg'

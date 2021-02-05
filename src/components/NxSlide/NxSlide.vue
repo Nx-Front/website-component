@@ -70,6 +70,7 @@
 </template>
 
 <script>
+/* 这里问题太多了 rAF重写吧 */
 export default {
     name: 'NxSlide',
     props: {

@@ -10,7 +10,7 @@
         {{ index !== 0 ? "." : "" }} {{ item.text }}
       </div>
     </div>
-    <div class="copy-right">{{ copyRight }}</div>
+    <div class="copy-right">{{ _copyRight }}</div>
   </div>
 </template>
 <script>
@@ -25,6 +25,11 @@ export default {
         data: {
             type: Array,
             default: () => []
+        }
+    },
+    computed: {
+        _copyRight() {
+            return `© ${new Date().getFullYear()} ${this.copyRight}`
         }
     },
     methods: {

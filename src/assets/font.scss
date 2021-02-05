@@ -1,0 +1,12 @@
+@font-face {
+  font-family: Avenir;
+	src: url(Avenir.ttc);
+	font-display: optional;
+}
+
+html,
+body,
+#app {
+  font-family: Avenir;
+  height: 100%;
+}
